@@ -141,3 +141,52 @@ h3{
     position: relative;
     top: 3px;
 }
+
+.fullscreen-btn {
+  position: absolute;
+  top: 20px; /* Adjust for desired vertical position */
+  right: 20px; /* Adjust for desired horizontal position */
+  background-color: transparent; /* Make button background transparent */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Indicate hover effect */
+  color: #fff; /* Set button text color (white in this case) */
+  z-index: 1; /* Ensure button appears above other elements */
+}
+
+
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #ececec;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-top: 20px;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #666;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0a0a0a;
+    cursor: pointer;
+}
