@@ -12,6 +12,8 @@ const image = document.getElementById('cover'),
 
 const music = new Audio();
 
+// Songs in the library //
+
 const songs = [
     {
         path: 'assets/1.mp3',
@@ -30,7 +32,39 @@ const songs = [
         displayName: 'Teu Eternamente',
         cover: 'assets/3.jpg',
         artist: 'Slow J',
-    }
+    },
+    {
+      path: 'assets/4.mp3',
+      displayName: 'sLo-fi',
+      cover: 'assets/4.jpg',
+      artist: 'Slow J',
+  },
+  {
+    path: 'assets/5.mp3',
+    displayName: 'Creepin',
+    cover: 'assets/5.jpg',
+    artist: 'Metro Boomin, The Weekend, 21 Savage',
+},
+{
+  path: 'assets/6.mp3',
+  displayName: 'Cant Stop',
+  cover: 'assets/6.jpg',
+  artist: 'Red Hot Chilli Peppers',
+},
+
+{
+  path: 'assets/7.mp3',
+  displayName: 'Carry on My Wayward Son',
+  cover: 'assets/7.jpg',
+  artist: 'Kansas',
+},
+
+{
+  path: 'assets/8.mp3',
+  displayName: 'Chain',
+  cover: 'assets/8.jpg',
+  artist: 'Back-On',
+}
 ];
 
 let musicIndex = 0;
@@ -99,4 +133,43 @@ music.addEventListener('ended', () => changeMusic(1));
 music.addEventListener('timeupdate', updateProgressBar);
 playerProgress.addEventListener('click', setProgressBar);
 
+loadMusic(songs[musicIndex]);
+
+// Fullscreen button //
+
+const fullscreenBtn = document.querySelector('.fullscreen-btn');
+
+fullscreenBtn.addEventListener('click', () => {
+  const doc = document.documentElement;
+  const requestFullscreen = doc.requestFullscreen || doc.webkitRequestFullscreen || doc.mozRequestFullscreen || doc.msRequestFullscreen;
+  const exitFullscreen = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullscreen || document.msExitFullscreen;
+
+  if (!document.fullscreenElement) {
+    requestFullscreen.call(doc);
+  } else {
+    exitFullscreen.call(document);
+  }
+});
+
+fullscreenBtn.addEventListener('click', () => {
+    // ... existing logic ...
+    if (!document.fullscreenElement) {
+      fullscreenBtn.querySelector('i').classList.replace('fa-expand', 'fa-compress');  
+    } else {
+      fullscreenBtn.querySelector('i').classList.replace('fa-compress', 'fa-expand');  
+    }
+  });
+
+  // Volume stuff //
+
+
+  const volumeSlider = document.getElementById("volumeSlider");
+
+  volumeSlider.addEventListener("input", function() {
+    setVolume(this.value / 100);
+  });
+  
+  function setVolume(volume) {
+    music.volume = volume;
+  }
 loadMusic(songs[musicIndex]);
